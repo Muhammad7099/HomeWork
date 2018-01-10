@@ -2,11 +2,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>PHP and MySQL</title>
+	<title></title>
 </head>
 <body>
 
-<form method="post" action="index.php">
+<form method="post" action="add.php">
 	<fieldset>	
 		<legend>Личные данные</legend>
 			<p><label>Login<input type="text" name="login"></label></p>
@@ -23,27 +23,24 @@
 		<p><label>Age<input type="text" name="age"></label></p><br><br>
 	</fieldset>
 
-	<p><input type="image" src="img/enter.png" name="enter"></p>
+	<p><input type="image" src="img/add.png" name="add"></p>
 	<p><input type="image" src="img/reset.png" name="reset"></p>
 
 </form>
 
 <?php  
+
 include_once("include.php");
+
 
 $login = strip_tags(trim($_POST['login']));
 $password = strip_tags(trim($_POST['password']));
 $email = strip_tags(trim($_POST['email']));
 $age = strip_tags(trim($_POST['age']));
 
-$q = mysqli_query($link, "SELECT * FROM user");
+$q = mysqli_query( $link, "INSERT INTO user (login, password, email, age ) VALUES ('$login', '$password', '$email', '$age' )" );
 
-while($db = mysqli_fetch_assoc($q)){
-	if($db['login'] == $login and $db['password'] == $password){
-		echo "Добро пожаловать $db[login]";
-	}
 
-}
 ?>
 
 </body>
