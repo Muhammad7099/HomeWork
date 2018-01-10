@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form method="post" action="qwerty.php">
+<form method="post" action="index.php">
 	<fieldset>	
 		<legend>Личные данные</legend>
 			<p><label>Login<input type="text" name="login"></label></p>
