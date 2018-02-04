@@ -36,14 +36,20 @@ $password = strip_tags(trim($_POST['password']));
 $email = strip_tags(trim($_POST['email']));
 $age = strip_tags(trim($_POST['age']));
 
-$q = mysqli_query($link, "SELECT * FROM user");
-
-while($db = mysqli_fetch_assoc($q)){
-	if($db['login'] == $login and $db['password'] == $password){
-		echo "Добро пожаловать $db[login]";
-	}
-
+if($q = mysqli_query($link, "SELECT * FROM user WHERE login = '$login' AND password = '$password'")){
+	$row = mysqli_num_rows($q);
 }
+
+if($row == 1){
+	echo "Ook";
+}
+
+else{
+	echo "error";
+}
+
+
+
 ?>
 
 </body>
